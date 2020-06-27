@@ -9,6 +9,6 @@ package ec.edu.ups.idao;
  *
  * @author Anahi
  */
-public class IVehiculoDao {
+public interface IVehiculoDao {
     
 }

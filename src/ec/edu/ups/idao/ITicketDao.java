@@ -9,6 +9,6 @@ package ec.edu.ups.idao;
  *
  * @author Anahi
  */
-public class ITicketDao {
+public interface ITicketDao {
     
 }
