@@ -134,5 +134,20 @@ Crear interfaces gráficas de usuario empleando técnicas de modelado de objetos
 
 **2.7	Clases del paquete ec.edu.ups.idioma**
 
+**3.	Realizar varios commits en la herramienta GitHub que demuestren el desarrollo de la aplicación desde principio a fin. Los commits deben ser realizados por todos los integrantes del grupo.**
 
+![Commits]()
+
+## Resultados Obtenidos
+
+* Crear una interfaz gráfica factible para el uso de diferentes personas.
+*	Crear una aplicación que sea apta para ser utilizada por otros países utilizando diferentes idiomas.
+
+## Conclusiones
+
+Aprender a diseñar interfaces gráficas para los proyectos de Netbeans, y así de esta manera los usuarios podrán interactuar de una mejor forma con las acciones que realiza la aplicación.
+
+## Recomendaciones
+
+Usar buenas prácticas de programación para que otros programadores puedan, si es el caso, modificar nuestro proyecto y sobre todo entenderlo.
 
