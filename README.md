@@ -23,7 +23,7 @@ Crear interfaces gráficas de usuario empleando técnicas de modelado de objetos
 
 **1.	Crear un repositorio en GitHub con el nombre “Práctica de laboratorio 05: Gestión de Tickets (Parqueadero)”**
 
-![Screen Repositorio creado]()
+![Screen Repositorio creado](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/ScreenGithub.png)
 
 **2.	Desarrollar una aplicación que permita la gestión de Tickets de un parqueadero de vehículos según los requerimientos planteados en las instrucciones de la práctica.**
 
@@ -100,43 +100,49 @@ Crear interfaces gráficas de usuario empleando técnicas de modelado de objetos
 **2.6.1	VentanaPrincipal**
 
 [Ventana Principal]()
-![Ventana Principal]()
+![Ventana Principal](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaPrincipal.png)
 
 **2.6.2	VentanaRegistroCliente**
 
 [Ventana RegistroCliente]()
 
-![Ventana RegistroCliente]()
+![Ventana RegistroCliente](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaRegistroCliente.png)
 
 **2.6.3	VentanaRegistroTicket**
 
 [Ventana RegistroTicket]()
 
-![Ventana RegistroTicket]()
+![Ventana RegistroTicket](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaTicket.png)
 
 **2.6.4	VentanaRegistroVehículo**
 
 [Ventana RegistroVehículo]()
 
-![Ventana RegistroVehículo]()
+![Ventana RegistroVehículo](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaRegistroVehiculo.png)
 
-**2.6.5	VentanaListar**
+**2.6.5	VentanaListarCliente**
 
-[Ventana Listar]()
+[Ventana ListarCliente]()
 
-![Ventana Listar]()
+![Ventana ListarCliente](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaListarCliente.png)
+
+**2.6.5	VentanaListarClienteTicket**
+
+[Ventana ListarTicket]()
+
+![Ventana ListarTicket](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaListarTicket.png)
 
 **2.6.6	VentanaSalida**
 
 [Ventana Salida]()
 
-![Ventana Salida]()
+![Ventana Salida](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaSalida.png)
 
 **2.7	Clases del paquete ec.edu.ups.idioma**
 
 **3.	Realizar varios commits en la herramienta GitHub que demuestren el desarrollo de la aplicación desde principio a fin. Los commits deben ser realizados por todos los integrantes del grupo.**
 
-![Commits]()
+![Commits](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/Commits.png)
 
 ## Resultados Obtenidos
 
@@ -150,4 +156,15 @@ Aprender a diseñar interfaces gráficas para los proyectos de Netbeans, y así 
 ## Recomendaciones
 
 Usar buenas prácticas de programación para que otros programadores puedan, si es el caso, modificar nuestro proyecto y sobre todo entenderlo.
+
+**Firmas:**
+
+Anahí Cabrera
+
+![Firma Anahí Cabrera](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/FirmaAnah%C3%ADCabrera.jpg)
+
+Nelson Ortega
+
+![Firma Nelson Ortega](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/FirmaNelsonOrtega.jpeg)
+
 
