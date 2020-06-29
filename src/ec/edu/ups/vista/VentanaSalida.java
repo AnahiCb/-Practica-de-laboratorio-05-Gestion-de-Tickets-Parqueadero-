@@ -5,15 +5,128 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.*;
+import ec.edu.ups.modelo.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Anahi
  */
 public class VentanaSalida extends javax.swing.JInternalFrame {
+    private Calendar fechaSalida;
 
+    private ControladorTicket controladorTicket;
+    private ControladorVehiculo controladorVehiculo;
+    private ControladorCliente controladorCliente;
+
+    private Locale localizacion;
+    private ResourceBundle recurso;
     /**
      * Creates new form VentanaSalida
      */
+    public VentanaSalida(ControladorTicket controladorTicket, ControladorVehiculo controladorVehiculo,
+            ControladorCliente controladorCliente) {
+        initComponents();
+
+        this.controladorTicket = controladorTicket;
+        this.controladorVehiculo = controladorVehiculo;
+        this.controladorCliente = controladorCliente;
+    }
+
+    public Locale getLocalizacion() {
+        return localizacion;
+    }
+
+    public void setLocalizacion(Locale localizacion) {
+        this.localizacion = localizacion;
+    }
+
+    public ResourceBundle getRecurso() {
+        return recurso;
+    }
+
+    public void setRecurso(ResourceBundle recurso) {
+        this.recurso = recurso;
+    }
+
+    public void cambiarIdioma(String idioma, String localizacion) {
+        this.setTitle(recurso.getString("tituloSalidaTicket"));
+        labelTicket.setText(recurso.getString("labelEscribaNumeroTicked"));
+        labelEntrada.setText(recurso.getString("labelFechaDeEntrada"));
+        labelSalida.setText(recurso.getString("labelFechaDeSalida"));
+        labelTiempo.setText(recurso.getString("labelTiempoDeParqueo"));
+        labelPagar.setText(recurso.getString("labelTotalPagar"));
+        btnBuscar.setText(recurso.getString("btnBuscar"));
+        btnFactura.setText(recurso.getString("btnFactura"));
+        btnLimpiar.setText(recurso.getString("btnLimpiar"));
+    }
+
+    public void ponerFecha() {
+        fechaSalida = Calendar.getInstance();
+        txtSalida.setText(fechaSalida.getTime().toString());
+    }
+
+    public void llenartblInformacion(Cliente cliente, Vehiculo vehiculo) {
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0);
+
+        Object[] rowData = {cliente.getNombre(), cliente.getCedula(), vehiculo.getPlaca(),
+            vehiculo.getMarca(), vehiculo.getModelo()};
+
+        modelo.addRow(rowData);
+
+        tabla.setModel(modelo);
+    }
+
+    public void cambiarJOptionPane1() {
+
+        if (localizacion.getLanguage().equals("es")) {
+            JOptionPane.showMessageDialog(this, "Llene el campo requerido para buscar el ticket");
+        } else {
+            JOptionPane.showMessageDialog(this, "Fill the required field to search a ticket");
+        }
+
+    }
+
+    public void cambiarJOptionPane2() {
+
+        if (localizacion.getLanguage().equals("es")) {
+            JOptionPane.showMessageDialog(this, "Ticket no encontrado, intentelo otra vez");
+        } else {
+            JOptionPane.showMessageDialog(this, "The ticket hasn't been found, try it again");
+        }
+
+    }
+    
+      public void cambiarJOptionPane3() {
+
+        if (localizacion.getLanguage().equals("es")) {
+            JOptionPane.showMessageDialog(this, "Factura emitida con exito");
+        } else {
+            JOptionPane.showMessageDialog(this, "The bill has been issued with success");
+        }
+
+    }
+    public void limpiar() {
+        txtNumTicket.setText("");
+        txtEntrada.setText("");
+        txtSalida.setText("");
+        txtValor.setText("");
+        txtTiempo.setText("");
+
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0);
+        tabla.setModel(modelo);
+
+        btnFactura.setEnabled(false);
+
+    }
     public VentanaSalida() {
         initComponents();
     }
@@ -27,21 +140,227 @@ public class VentanaSalida extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        labelTicket = new javax.swing.JLabel();
+        labelEntrada = new javax.swing.JLabel();
+        labelSalida = new javax.swing.JLabel();
+        labelTiempo = new javax.swing.JLabel();
+        labelPagar = new javax.swing.JLabel();
+        txtNumTicket = new javax.swing.JTextField();
+        txtEntrada = new javax.swing.JTextField();
+        txtSalida = new javax.swing.JTextField();
+        txtTiempo = new javax.swing.JTextField();
+        txtValor = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btnFactura = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre del Cliente", "Cédula", "Placa", "Marca", "Modelo"
+            }
+        ));
+        jScrollPane1.setViewportView(tabla);
+
+        labelTicket.setText("Nro. de Ticket:");
+
+        labelEntrada.setText("Fecha de Entrada:");
+
+        labelSalida.setText("Fecha de Salida:");
+
+        labelTiempo.setText("Tiempo de Parqueo:");
+
+        labelPagar.setText("Valor a pagar:");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnFactura.setText("Factura");
+        btnFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturaActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTicket)
+                            .addComponent(labelEntrada)
+                            .addComponent(labelSalida)
+                            .addComponent(labelTiempo)
+                            .addComponent(labelPagar))
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNumTicket)
+                            .addComponent(txtEntrada)
+                            .addComponent(txtSalida)
+                            .addComponent(txtTiempo)
+                            .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(btnBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFactura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimpiar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTicket)
+                    .addComponent(txtNumTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEntrada))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelSalida))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTiempo))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelPagar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnFactura)
+                    .addComponent(btnLimpiar)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String num = txtNumTicket.getText();
+
+        if (num == null) {
+            cambiarJOptionPane1();
+        } else {
+            int num2 = Integer.parseInt(num);
+            Ticket t = controladorTicket.encontrarTicket(num2);
+            if (t == null) {
+                cambiarJOptionPane2();
+            } else {
+                txtEntrada.setText(t.getFechaEntrada().toString());
+                ponerFecha();
+
+                Date fechaS = Calendar.getInstance().getTime();
+                double tiempo = controladorTicket.calcularTiempo(t.getFechaEntrada(), fechaS);
+
+                String totalTiempo = controladorTicket.calcularHorasMinutos(tiempo);
+                txtTiempo.setText(totalTiempo);
+
+                double pago = controladorTicket.calcularPago(tiempo);
+                txtValor.setText(String.valueOf(pago));
+
+                Vehiculo ve = controladorVehiculo.buscarPorTicket(t);
+                Cliente c = controladorCliente.buscarPorVehiculo(ve.getPlaca());
+
+                llenartblInformacion(c, ve);
+
+                btnFactura.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
+        int nu = Integer.parseInt(txtNumTicket.getText());
+        Date fechaS = Calendar.getInstance().getTime();
+        double pago = Double.parseDouble(txtValor.getText());
+        String tiempo = txtTiempo.getText();
+
+        Ticket t = controladorTicket.encontrarTicket(nu);
+        Vehiculo ve = controladorVehiculo.buscarPorTicket(t);
+
+        Ticket ticket = controladorTicket.actualizarTicket(t, fechaS, pago, tiempo);
+
+        ve = controladorVehiculo.actualizarVehiculo(ve, ticket);
+
+        Cliente c = controladorCliente.buscarPorVehiculo(ve.getPlaca());
+
+        controladorCliente.actualizarVehiculo(c, ve);
+
+        cambiarJOptionPane3();
+        limpiar();
+        this.hide();
+    }//GEN-LAST:event_btnFacturaActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnFactura;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelEntrada;
+    private javax.swing.JLabel labelPagar;
+    private javax.swing.JLabel labelSalida;
+    private javax.swing.JLabel labelTicket;
+    private javax.swing.JLabel labelTiempo;
+    private javax.swing.JTable tabla;
+    private javax.swing.JTextField txtEntrada;
+    private javax.swing.JTextField txtNumTicket;
+    private javax.swing.JTextField txtSalida;
+    private javax.swing.JTextField txtTiempo;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

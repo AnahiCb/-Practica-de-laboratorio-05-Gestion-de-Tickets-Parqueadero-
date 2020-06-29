@@ -16,13 +16,15 @@ import java.util.Objects;
 public class Cliente {
     private String cedula;
     private String nombre;
+    private String apellido;
     private Telefono telefono;
     private Direccion direccion;
     private List<Vehiculo> listaVehiculos;
 
-    public Cliente(String cedula, String nombre, Telefono telefono, Direccion direccion) {
+    public Cliente(String cedula, String nombre,String apellido, Telefono telefono, Direccion direccion) {
         this.cedula = cedula;
         this.nombre = nombre;
+        this.apellido=apellido;
         this.telefono = telefono;
         this.direccion = direccion;
         listaVehiculos = new ArrayList<>();
@@ -30,16 +32,6 @@ public class Cliente {
 
     public Cliente() {
     }
-
-    
-    /*
-    public Cliente(String cedula, String nombre, Telefono telefono, Direccion direccion, List<Vehiculo> listaVehiculos) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.listaVehiculos = listaVehiculos;
-    }*/
     public String getCedula() {
         return cedula;
     }
@@ -54,6 +46,13 @@ public class Cliente {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public Telefono getTelefono() {

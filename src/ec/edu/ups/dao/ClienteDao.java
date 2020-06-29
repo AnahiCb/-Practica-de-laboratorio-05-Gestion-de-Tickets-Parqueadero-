@@ -60,17 +60,6 @@ public class ClienteDao implements IClienteDao {
 
     @Override
     public void update(Cliente cliente) {
-
-        /* Cliente aux = new Cliente();
-        Iterator<Cliente> it = clientes.iterator();
-        while (it.hasNext()) {
-            Cliente c = it.next();
-            if (c.getCedula().equals(cliente.getCedula())) {
-                aux = c;
-            }
-        }
-        clientes.
-        clientes.add(cliente);*/
         if (clientes.contains(cliente)) {
             clientes.remove(cliente);
             clientes.add(cliente);

@@ -5,17 +5,132 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorCliente;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Anahi
  */
 public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
+    private ControladorCliente controladorCliente;
+    private List<String> operadoras;
+    private Locale localizacion;
+    private ResourceBundle recurso;
 
     /**
      * Creates new form VentanaRegistroCliente
      */
-    public VentanaRegistroCliente() {
+    public VentanaRegistroCliente(ControladorCliente controladorCliente) {
         initComponents();
+        cargarDatosOperadora();
+        formatearNumeroCasa();
+
+        this.controladorCliente = controladorCliente;
+    }
+    public Locale getLocalizacion() {
+        return localizacion;
+    }
+
+    public void setLocalizacion(Locale localizacion) {
+        this.localizacion = localizacion;
+    }
+
+    public ResourceBundle getRecurso() {
+        return recurso;
+    }
+
+    public void setRecurso(ResourceBundle recurso) {
+        this.recurso = recurso;
+    }
+
+    public void cambiarIdioma(String idioma, String localizacion) {
+        this.setTitle(recurso.getString("ventanaRegistrarCliente"));
+        datosLabel.setText(recurso.getString("panelDatos"));
+        telefonoLabel.setText(recurso.getString("panelTelefono"));
+        labelDireccion.setText(recurso.getString("panelDireccion"));
+        nombreLabel.setText(recurso.getString("labelNombre"));
+        apellidoLabel.setText(recurso.getString("labelApellido"));
+        cedulaLabel.setText(recurso.getString("labelCedula"));
+        tipoLabel.setText(recurso.getString("labelTipo"));
+        numeroLabel.setText(recurso.getString("labelNumero"));
+        operadoraLabel.setText(recurso.getString("labelTelefonoOperadora"));
+        labelCalle1.setText(recurso.getString("labelCallePrincipal"));
+        labelCalle2.setText(recurso.getString("labelCalleSecundaria"));
+        btnRegistrar.setText(recurso.getString("btnCrear"));
+        
+
+    }
+
+    public void cargarDatosOperadora() {
+        operadoras = new ArrayList<>();
+        
+        operadoras.add("Movistar");
+        operadoras.add("Claro");
+        operadoras.add("CNT");
+        operadoras.add("Tuenti");
+        operadoras.add("Etapa");
+
+        cargarCBXOperadora();
+
+    }
+
+    public void cargarCBXOperadora() {
+
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) operadoraCbx.getModel();
+        for (String opera : operadoras) {
+            modelo.addElement(opera);
+        }
+
+    }
+
+    public void formatearNumeroCasa() {
+        try {
+            txtnumCasa.setFormatterFactory(
+                    new javax.swing.text.DefaultFormatterFactory(
+                            new javax.swing.text.MaskFormatter("##-###")
+                    )
+            );
+        } catch (java.text.ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Formato erroneo");
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void cambiarJOptionPane1() {
+
+        if (localizacion.getLanguage().equals("es")) {
+            JOptionPane.showMessageDialog(this, "Llene todos los campos");
+        } else {
+            JOptionPane.showMessageDialog(this, "Fill all the fields");
+        }
+
+    }
+
+    public void cambiarJOptionPane2() {
+
+        if (localizacion.getLanguage().equals("es")) {
+            JOptionPane.showMessageDialog(this, "Cliente creado");
+        } else {
+            JOptionPane.showMessageDialog(this, "The new customer has been registered");
+        }
+
+    }
+
+    public void cambiarJOptionPane3() {
+
+        if (localizacion.getLanguage().equals("es")) {
+            JOptionPane.showMessageDialog(this, "El cliente ya existe");
+        } else {
+            JOptionPane.showMessageDialog(this, "The customer is already in the sytem");
+        }
+
     }
 
     /**
@@ -27,21 +142,321 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        datosLabel = new javax.swing.JLabel();
+        cedulaLabel = new javax.swing.JLabel();
+        nombreLabel = new javax.swing.JLabel();
+        apellidoLabel = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        telefonoLabel = new javax.swing.JLabel();
+        numeroLabel = new javax.swing.JLabel();
+        tipoLabel = new javax.swing.JLabel();
+        operadoraLabel = new javax.swing.JLabel();
+        tipoCbx = new javax.swing.JComboBox<>();
+        operadoraCbx = new javax.swing.JComboBox<>();
+        txtNumero = new javax.swing.JFormattedTextField();
+        jPanel3 = new javax.swing.JPanel();
+        labelDireccion = new javax.swing.JLabel();
+        labelCalle1 = new javax.swing.JLabel();
+        labelCalle2 = new javax.swing.JLabel();
+        labelCallenum = new javax.swing.JLabel();
+        txtCalle1 = new javax.swing.JTextField();
+        txtCalle2 = new javax.swing.JTextField();
+        txtnumCasa = new javax.swing.JFormattedTextField();
+        btnRegistrar = new javax.swing.JButton();
+
+        datosLabel.setText("Datos");
+
+        cedulaLabel.setText("Cédula:");
+
+        nombreLabel.setText("Nombre:");
+
+        apellidoLabel.setText("Apellido");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(datosLabel)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cedulaLabel)
+                            .addComponent(nombreLabel)
+                            .addComponent(apellidoLabel))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCedula)
+                            .addComponent(txtNombre)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(datosLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cedulaLabel)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreLabel)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(apellidoLabel)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        telefonoLabel.setText("Teléfono");
+
+        numeroLabel.setText("Número:");
+
+        tipoLabel.setText("Tipo:");
+
+        operadoraLabel.setText("Operadora");
+
+        tipoCbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipoCbx.setToolTipText("Seleccione el tipo de teléfono");
+        tipoCbx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoCbxActionPerformed(evt);
+            }
+        });
+
+        operadoraCbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(telefonoLabel)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroLabel)
+                            .addComponent(operadoraLabel)
+                            .addComponent(tipoLabel))))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tipoCbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(operadoraCbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(telefonoLabel)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipoCbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numeroLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(operadoraLabel)
+                    .addComponent(operadoraCbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        labelDireccion.setText("Dirección");
+
+        labelCalle1.setText("Calle Principal:");
+
+        labelCalle2.setText("Calle Secundaria:");
+
+        labelCallenum.setText("Número:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDireccion)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelCalle2)
+                            .addComponent(labelCalle1)
+                            .addComponent(labelCallenum))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCalle2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                            .addComponent(txtCalle1)
+                            .addComponent(txtnumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelDireccion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCalle1)
+                    .addComponent(txtCalle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCalle2)
+                    .addComponent(txtCalle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCallenum)
+                    .addComponent(txtnumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistrar)
+                .addGap(149, 149, 149))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(btnRegistrar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String cedula = txtCedula.getText();
+        String tipo = tipoCbx.getSelectedItem().toString();
+        String numeroT = txtNumero.getText();
+        String operadora = operadoraCbx.getSelectedItem().toString();
+        String calleP = txtCalle1.getText();
+        String calleS = txtCalle2.getText();
+        String numeroC = txtnumCasa.getText();
+
+        if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() || tipo.equals("Seleccione") || numeroT.isEmpty()
+                || operadora.isEmpty() || calleP.isEmpty() || calleS.isEmpty() || numeroC.isEmpty()) {
+            cambiarJOptionPane1();
+        } else {
+            boolean verdad = controladorCliente.crearCliente(cedula, nombre,apellido,
+                    tipo, numeroT, operadora, calleP, calleS, numeroC);
+            if (verdad) {
+                cambiarJOptionPane2();
+                this.hide();
+                limpiar();
+            } else {
+                cambiarJOptionPane3();
+            }
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+    public void limpiar() {
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtCedula.setText("");
+        tipoCbx.setSelectedIndex(0);
+        operadoraCbx.setSelectedIndex(0);
+        txtNumero.setValue("");
+        txtCalle1.setText("");
+        txtCalle2.setText("");
+        txtnumCasa.setValue("");
+    }
+    private void tipoCbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoCbxActionPerformed
+        try {
+            String item = (String) tipoCbx.getSelectedItem();
+            if (item.equals("Casa")) {
+                txtNumero.setFormatterFactory(
+                        new javax.swing.text.DefaultFormatterFactory(
+                                new javax.swing.text.MaskFormatter("(+593)#-####-###")
+                        )
+                );
+
+            } else if (item.equals("Celular")) {
+                txtNumero.setFormatterFactory(
+                        new javax.swing.text.DefaultFormatterFactory(
+                                new javax.swing.text.MaskFormatter("(593)###-###-###")
+                        )
+                );
+
+            } else {
+                txtNumero.setFormatterFactory(
+                        new javax.swing.text.DefaultFormatterFactory(
+                                new javax.swing.text.MaskFormatter("(593)###-###-###")
+                        )
+                );
+            }
+        } catch (java.text.ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Formato del número del teléfono erroneo");
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_tipoCbxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellidoLabel;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JLabel cedulaLabel;
+    private javax.swing.JLabel datosLabel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel labelCalle1;
+    private javax.swing.JLabel labelCalle2;
+    private javax.swing.JLabel labelCallenum;
+    private javax.swing.JLabel labelDireccion;
+    private javax.swing.JLabel nombreLabel;
+    private javax.swing.JLabel numeroLabel;
+    private javax.swing.JComboBox<String> operadoraCbx;
+    private javax.swing.JLabel operadoraLabel;
+    private javax.swing.JLabel telefonoLabel;
+    private javax.swing.JComboBox<String> tipoCbx;
+    private javax.swing.JLabel tipoLabel;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCalle1;
+    private javax.swing.JTextField txtCalle2;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JFormattedTextField txtNumero;
+    private javax.swing.JFormattedTextField txtnumCasa;
     // End of variables declaration//GEN-END:variables
 }
