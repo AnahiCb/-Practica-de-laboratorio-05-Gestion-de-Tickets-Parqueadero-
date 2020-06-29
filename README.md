@@ -85,60 +85,68 @@ Crear interfaces gráficas de usuario empleando técnicas de modelado de objetos
 
 **2.5.1	Clase ControladorCliente**
 
-[]()
+[Controlador Cliente](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/controlador/ControladorCliente.java)
 
 **2.5.2	Clase ControladorTicket**
 
-[]()
+[Contralador Ticket](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/controlador/ControladorTicket.java)
 
 **2.5.3	Clase ControladorVehículo**
 
-[]()
+[Controlador Vehículo](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/controlador/ControladorVehículo.java)
 
 **2.6	Ventanas (Clases) del paquete ec.edu.ups.vista**
 
 **2.6.1	VentanaPrincipal**
 
-[Ventana Principal]()
+[Ventana Principal](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/vista/VentanaPrincipal.java)
 ![Ventana Principal](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaPrincipal.png)
 
 **2.6.2	VentanaRegistroCliente**
 
-[Ventana RegistroCliente]()
+[Ventana RegistroCliente](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/vista/VentanaRegistroCliente.java)
 
 ![Ventana RegistroCliente](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaRegistroCliente.png)
 
 **2.6.3	VentanaRegistroTicket**
 
-[Ventana RegistroTicket]()
+[Ventana RegistroTicket](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/vista/VentanaRegistroTicket.java)
 
 ![Ventana RegistroTicket](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaTicket.png)
 
 **2.6.4	VentanaRegistroVehículo**
 
-[Ventana RegistroVehículo]()
+[Ventana RegistroVehículo](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/vista/VentanaRegistroVehiculo.java)
 
 ![Ventana RegistroVehículo](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaRegistroVehiculo.png)
 
 **2.6.5	VentanaListarCliente**
 
-[Ventana ListarCliente]()
+[Ventana ListarCliente](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/vista/VentanaListarClientes.java)
 
 ![Ventana ListarCliente](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaListarCliente.png)
 
 **2.6.5	VentanaListarClienteTicket**
 
-[Ventana ListarTicket]()
+[Ventana ListarTicket](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/vista/VentanaListaTickets.java)
 
 ![Ventana ListarTicket](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaListarTicket.png)
 
 **2.6.6	VentanaSalida**
 
-[Ventana Salida]()
+[Ventana Salida](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/vista/VentanaSalida.java)
 
 ![Ventana Salida](https://github.com/AnahiCb/Imagenes_Practica05/blob/master/VentanaSalida.png)
 
 **2.7	Clases del paquete ec.edu.ups.idioma**
+
+**2.7.1 mensaje_en_Es**
+
+[idioma Español](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/idioma/mensaje_en_ES.properties)
+
+**2.7.1 mensaje_en_Uk**
+
+[idioma Ingles](https://github.com/AnahiCb/-Practica-de-laboratorio-05-Gestion-de-Tickets-Parqueadero-/blob/master/src/ec/edu/ups/idioma/mensaje_en_UK.properties)
 
 **3.	Realizar varios commits en la herramienta GitHub que demuestren el desarrollo de la aplicación desde principio a fin. Los commits deben ser realizados por todos los integrantes del grupo.**
 
